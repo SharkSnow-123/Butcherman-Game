@@ -32,7 +32,6 @@ offset_right = 467.0
 offset_bottom = 342.0
 theme = SubResource("Theme_1hblg")
 theme_type_variation = &"TooltipLabel"
-text = "Lorem"
 autowrap_mode = 2
 
 [node name="Panel" type="Panel" parent="IntroScene1"]

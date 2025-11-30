@@ -156,7 +156,7 @@ func handle_letter(letter):
 
 	if correct:
 		if "_" not in hidden:
-			show_end("         YOU WIN!\n AHHHHHHHHHHH ")
+			show_end("          YOU WIN!\n Don't let it get to your head.")
 	else:
 		wrong_guesses += 1
 		currentHealth -= 1
