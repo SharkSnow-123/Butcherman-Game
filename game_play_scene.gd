@@ -91,7 +91,6 @@ func connect_buttons():
 	continue_button.pressed.connect(_on_continue_pressed)
 	return_button.pressed.connect(_on_return_main_pressed)
 
-
 # ----------------------------------
 # UPDATE DISPLAY
 # ----------------------------------
@@ -156,7 +155,7 @@ func handle_letter(letter):
 
 	if correct:
 		if "_" not in hidden:
-			show_end("YOU WIN!")
+			show_end("         YOU WIN!\n Don’t let it go to ur head.")
 	else:
 		wrong_guesses += 1
 		currentHealth -= 1
@@ -210,11 +209,16 @@ func undo():
 # SHOW LOSE/WIN
 # ----------------------------------
 func show_end(text):
+	$LosePanel/Lose.visible = false
+	$LosePanel/Win.visible = false
+	
 	if text == "YOU LOSE!":
 		title_label.text = text + "\nThe word was: " + chosen_word
+		$LosePanel/Lose.visible = true
 		last_round_result = "lose"
 	else:
 		title_label.text = text
+		$LosePanel/Win.visible = true
 		last_round_result = "win"
 
 	lose_panel.visible = true

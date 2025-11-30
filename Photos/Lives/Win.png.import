@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d16ld3yvkw8eb"
-path="res://.godot/imported/Butcherman.png-c4785ccbc5a6838f91db002c383a69ab.ctex"
+uid="uid://dwo8q1fy27dl3"
+path="res://.godot/imported/Win.png-e05f490914c0b4ba412af7fe849b058d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Photos/Butcherman.png"
-dest_files=["res://.godot/imported/Butcherman.png-c4785ccbc5a6838f91db002c383a69ab.ctex"]
+source_file="res://Photos/Lives/Win.png"
+dest_files=["res://.godot/imported/Win.png-e05f490914c0b4ba412af7fe849b058d.ctex"]
 
 [params]
 
