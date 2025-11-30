@@ -5,9 +5,6 @@ extends Node
 # UNDO is still built-in, not manually coded to see how the game works. So, as arrays.
 # Note written by: Sharksnow-123 (Briar)
 
-
-
-
 # --- SETTINGS ---
 const MAX_GUESSES := 5
 var word_list_day1 = ["APPLE", "ROBOT", "SNAKE"]
@@ -23,6 +20,9 @@ var undo_stack := []          # using built-in Array for undo snapshots
 var current_day := 1
 const MAX_DAYS := 3
 var last_round_result : String = ""   # "win" or "lose"
+var currentHealth: int = MAX_GUESSES
+var undoCtr = 0;
+
 
 # --- UI ---
 @onready var word_label = $WordLabel
@@ -45,10 +45,12 @@ func _ready():
 # START GAME
 # ----------------------------------
 func start_game():
+	currentHealth = MAX_GUESSES
 	wrong_guesses = 0
+	undoCtr = 0
 	guessed_letters.clear()
 	undo_stack.clear()
-	
+
 	# choose a word based on current day
 	chosen_word = _get_word_for_day()
 	hidden.clear()
@@ -56,6 +58,7 @@ func start_game():
 		hidden.append("_")
 
 	update_ui()
+	update_health_display()
 	_update_day_display()
 	lose_panel.visible = false
 
@@ -101,6 +104,32 @@ func _update_day_display():
 	# day_frame can be Label or a container with a child label; handle both
 	if day_frame is Label:
 		day_frame.text = "Day: " + str(current_day) + " / " + str(MAX_DAYS)
+
+func update_health_display():
+	# list sa hearts / texturerects
+	var hearts = [
+		$CanvasGroup/Health1,
+		$CanvasGroup/Health2,
+		$CanvasGroup/Health3,
+		$CanvasGroup/Health4,
+		$CanvasGroup/Health5
+	]
+	
+	print("Current hearts: ", hearts)
+	
+	#hide the hearts muna
+	for heart in hearts:
+		heart.visible = false;
+	
+	if currentHealth == MAX_GUESSES:
+		hearts[currentHealth - 1].visible = true;
+		
+	
+	if currentHealth > 0:
+		print("Heart State: ", hearts[currentHealth - 1])
+		hearts[currentHealth - 1].visible = true;
+		
+	
 	
 # ----------------------------------
 # GUESS LETTER
@@ -130,11 +159,14 @@ func handle_letter(letter):
 			show_end("YOU WIN!")
 	else:
 		wrong_guesses += 1
+		currentHealth -= 1
+		update_health_display()
 		print("[GUESS] Wrong guesses:", wrong_guesses, " / ", MAX_GUESSES)
-
+		print("[GUESS] Current Health:", currentHealth, " / ", MAX_GUESSES)
 		if wrong_guesses >= MAX_GUESSES:
 			show_end("YOU LOSE!")
-
+		
+	
 
 # ----------------------------------
 # UNDO
@@ -144,13 +176,17 @@ func save_state():
 	var snapshot = {
 		"hidden": hidden.duplicate(),
 		"guessed": guessed_letters.duplicate(),
-		"wrong": wrong_guesses
+		"wrong": wrong_guesses,
+		"currentH": currentHealth
 	}
 	undo_stack.append(snapshot)
 	print("[SAVE] saved state; undo stack size =", undo_stack.size())
 
 
 func undo():
+	if undoCtr == 2:
+		return
+	
 	if undo_stack.is_empty():
 		print("[UNDO] No more undo")
 		return
@@ -159,12 +195,16 @@ func undo():
 	hidden = state.hidden
 	guessed_letters = state.guessed
 	wrong_guesses = state.wrong
-
+	currentHealth = state.currentH
+	
+	undoCtr += 1
 	update_ui()
+	update_health_display()
 	print("[UNDO] restored state; undo stack size =", undo_stack.size())
 
 	update_ui()
 	print("[UNDO] restored state; undo stack size =", undo_stack.size())
+
 
 # ----------------------------------
 # SHOW LOSE/WIN
