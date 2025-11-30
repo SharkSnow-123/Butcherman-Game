@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://d0yg1xr46lje1"]
+[gd_scene load_steps=21 format=3 uid="uid://d0yg1xr46lje1"]
 
 [ext_resource type="Script" uid="uid://brm7p6gshbjpu" path="res://game_play_scene.gd" id="1_q0gqs"]
 [ext_resource type="Texture2D" uid="uid://bkrd4h3hptpd2" path="res://Photos/GamePlayScene.png" id="2_frxao"]
@@ -6,16 +6,11 @@
 [ext_resource type="FontFile" uid="uid://cgl1uqp4uqud0" path="res://ButtonFont.TTF" id="4_ftlg0"]
 [ext_resource type="Texture2D" uid="uid://dyb7wbnvudins" path="res://Photos/Lose.png" id="5_l37oj"]
 [ext_resource type="Texture2D" uid="uid://ciihkhkvppyex" path="res://Photos/Lives/Head.png" id="5_rfioy"]
-[ext_resource type="Texture2D" uid="uid://cdm3l37hjgfjd" path="res://Photos/Lives/Left Foot.png" id="6_l37oj"]
+[ext_resource type="Texture2D" uid="uid://cdm3l37hjgfjd" path="res://Photos/Health_GUI/CurrHealth_4.png" id="6_l37oj"]
 [ext_resource type="Texture2D" uid="uid://dilfyhoor25sx" path="res://Photos/Win.png" id="6_ydirw"]
-[ext_resource type="Texture2D" uid="uid://bi1scb4rsjoku" path="res://Photos/Lives/Right Hand.png" id="7_ydirw"]
-[ext_resource type="Texture2D" uid="uid://chfjvtid856r2" path="res://Photos/Lives/Left Hand.png" id="8_vx3cq"]
-[ext_resource type="Texture2D" uid="uid://dcagkrxa2uftj" path="res://Photos/Lives/Right Foot.png" id="9_75wbv"]
-[ext_resource type="Texture2D" uid="uid://dcn1s6pcbiimh" path="res://Hearts_GUI/currHealth_1.png" id="12_uob7q"]
-[ext_resource type="Texture2D" uid="uid://cxpga7cwuiiu" path="res://Hearts_GUI/currHealth_2.png" id="13_7asqj"]
-[ext_resource type="Texture2D" uid="uid://ec11bqe3cwqx" path="res://Hearts_GUI/currHealth_3.png" id="14_xgw85"]
-[ext_resource type="Texture2D" uid="uid://c3gkstkd0qny6" path="res://Hearts_GUI/currHealth_4.png" id="15_v0ehj"]
-[ext_resource type="Texture2D" uid="uid://b3dmgb401eehk" path="res://Hearts_GUI/currHealth_5.png" id="16_en5oy"]
+[ext_resource type="Texture2D" uid="uid://bi1scb4rsjoku" path="res://Photos/Health_GUI/CurrHealth_1.png" id="7_ydirw"]
+[ext_resource type="Texture2D" uid="uid://chfjvtid856r2" path="res://Photos/Health_GUI/CurrHealth_2.png" id="8_vx3cq"]
+[ext_resource type="Texture2D" uid="uid://dcagkrxa2uftj" path="res://Photos/Health_GUI/CurrHealth_3.png" id="9_75wbv"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ftlg0"]
 bg_color = Color(0, 0, 0, 1)
