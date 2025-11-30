@@ -1,12 +1,13 @@
-[gd_scene load_steps=20 format=3 uid="uid://d0yg1xr46lje1"]
+[gd_scene load_steps=21 format=3 uid="uid://d0yg1xr46lje1"]
 
 [ext_resource type="Script" uid="uid://brm7p6gshbjpu" path="res://game_play_scene.gd" id="1_q0gqs"]
 [ext_resource type="Texture2D" uid="uid://bkrd4h3hptpd2" path="res://Photos/GamePlayScene.png" id="2_frxao"]
 [ext_resource type="FontFile" uid="uid://xcsqkcqh8yb0" path="res://KeyboardFont.TTF" id="3_4jtd1"]
 [ext_resource type="FontFile" uid="uid://cgl1uqp4uqud0" path="res://ButtonFont.TTF" id="4_ftlg0"]
 [ext_resource type="Texture2D" uid="uid://dyb7wbnvudins" path="res://Photos/Lose.png" id="5_l37oj"]
-[ext_resource type="Texture2D" uid="uid://ciihkhkvppyex" path="res://Photos/Health_GUI/CurrHealth_5.png" id="5_rfioy"]
+[ext_resource type="Texture2D" uid="uid://ciihkhkvppyex" path="res://Photos/Lives/Head.png" id="5_rfioy"]
 [ext_resource type="Texture2D" uid="uid://cdm3l37hjgfjd" path="res://Photos/Health_GUI/CurrHealth_4.png" id="6_l37oj"]
+[ext_resource type="Texture2D" uid="uid://dilfyhoor25sx" path="res://Photos/Win.png" id="6_ydirw"]
 [ext_resource type="Texture2D" uid="uid://bi1scb4rsjoku" path="res://Photos/Health_GUI/CurrHealth_1.png" id="7_ydirw"]
 [ext_resource type="Texture2D" uid="uid://chfjvtid856r2" path="res://Photos/Health_GUI/CurrHealth_2.png" id="8_vx3cq"]
 [ext_resource type="Texture2D" uid="uid://dcagkrxa2uftj" path="res://Photos/Health_GUI/CurrHealth_3.png" id="9_75wbv"]
@@ -340,7 +341,6 @@ offset_bottom = 558.0
 theme_override_fonts/font = ExtResource("3_4jtd1")
 
 [node name="LosePanel" type="Panel" parent="."]
-visible = false
 visibility_layer = 512
 offset_left = 268.0
 offset_top = 227.0
@@ -350,7 +350,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_rfioy")
 
 [node name="Title" type="Label" parent="LosePanel"]
 layout_mode = 0
-offset_left = 133.0
+offset_left = 126.0
 offset_top = 51.0
 offset_right = 400.0
 offset_bottom = 137.0
@@ -380,6 +380,11 @@ text = "Return to Main Menu"
 position = Vector2(245, 169.5)
 scale = Vector2(1.0799996, 1.1166673)
 texture = ExtResource("5_l37oj")
+
+[node name="Win" type="Sprite2D" parent="LosePanel"]
+position = Vector2(244.5, 170)
+scale = Vector2(1.0600002, 1.1333333)
+texture = ExtResource("6_ydirw")
 
 [node name="Dialogue_Panel" type="Panel" parent="."]
 offset_left = 191.0
