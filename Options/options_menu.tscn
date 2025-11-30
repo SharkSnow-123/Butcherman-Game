@@ -1,0 +1,71 @@
+[gd_scene load_steps=8 format=3 uid="uid://dcly6qupembpx"]
+
+[ext_resource type="Texture2D" uid="uid://bv620r1wlm6nm" path="res://Options/Music-On@4x.png" id="1_6bffs"]
+[ext_resource type="Script" uid="uid://dy7lrwskdb1tf" path="res://Options/options_menu.gd" id="1_s31rx"]
+[ext_resource type="Texture2D" uid="uid://ymsh2u7weoat" path="res://Options/Music-Off@4x.png" id="2_vwtu1"]
+[ext_resource type="Texture2D" uid="uid://dpmaslufuiixp" path="res://Options/Hover-Music-On@4x.png" id="3_4gmlt"]
+[ext_resource type="Texture2D" uid="uid://gymthdij4lcp" path="res://Options/Sound-Two@4x.png" id="4_rrf4u"]
+[ext_resource type="Texture2D" uid="uid://ca1ry3kkwdyju" path="res://Options/Sound-None@4x.png" id="5_nqwpw"]
+[ext_resource type="Texture2D" uid="uid://c02qbq7oin12u" path="res://Options/Hover-Sound-Two@4x.png" id="6_vwtu1"]
+
+[node name="OptionsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = 3.0
+offset_right = -2.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_s31rx")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1151.0
+offset_bottom = 646.0
+color = Color(0.15127608, 0.15127608, 0.15127608, 1)
+metadata/_edit_lock_ = true
+
+[node name="SoundColor" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 152.0
+offset_top = 99.0
+offset_right = 310.0
+offset_bottom = 251.0
+color = Color(0.1148968, 0.11489681, 0.1148968, 1)
+
+[node name="MusicColor" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 906.0
+offset_top = 110.0
+offset_right = 1064.0
+offset_bottom = 262.0
+color = Color(0.1148968, 0.11489681, 0.1148968, 1)
+
+[node name="MusicButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 860.0
+offset_top = 78.0
+offset_right = 1084.0
+offset_bottom = 302.0
+toggle_mode = true
+texture_normal = ExtResource("1_6bffs")
+texture_pressed = ExtResource("2_vwtu1")
+texture_hover = ExtResource("3_4gmlt")
+
+[node name="Music" type="AudioStreamPlayer" parent="MusicButton"]
+
+[node name="SoundButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 135.0
+offset_top = 65.0
+offset_right = 359.0
+offset_bottom = 289.0
+toggle_mode = true
+texture_normal = ExtResource("4_rrf4u")
+texture_pressed = ExtResource("5_nqwpw")
+texture_hover = ExtResource("6_vwtu1")
+
+[node name="Sound" type="AudioStreamPlayer" parent="SoundButton"]
