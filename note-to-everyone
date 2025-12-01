@@ -1,0 +1,8 @@
+// kuan, if the main menu music does not work, follow this step by step guide:
+
+1. press 'Project' then go to 'Project Settings'
+2. go to 'Globals'
+3. press the folder icon, then press the 'Global' folder
+4. then double press the music_player.gd
+5. then press '+Add'
+6. that's it.
