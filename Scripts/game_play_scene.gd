@@ -205,6 +205,41 @@ func undo():
 	update_ui()
 	print("[UNDO] restored state; undo stack size =", undo_stack.size())
 
+# ----------------------------------
+# REDO
+# ----------------------------------
+
+func redo():
+	if redoCtr == 2:
+		return
+	
+	if redo_stack.is_empty():
+		print("[REDO] No more redo")
+		return
+	
+	var redo_snapshot = {
+		"hidden": hidden.duplicate(),
+		"guessed": guessed_letters.duplicate(),
+		"wrong": wrong_guesses,
+		"currentH": currentHealth
+	}
+	undo_stack.append(redo_snapshot)
+	
+	var state = redo_stack.pop_back()
+	hidden = state.hidden
+	guessed_letters = state.guessed
+	wrong_guesses = state.wrong
+	currentHealth = state.currentH
+	
+	redoCtr += 1
+	#undoCtr = 0
+	
+	update_ui()
+	update_health_display()
+	print("[REDO] restored state; redo stack size =", redo_stack.size())
+
+
+
 
 # ----------------------------------
 # SHOW LOSE/WIN
