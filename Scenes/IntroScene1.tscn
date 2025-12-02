@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://cml7krljcmk34"]
 
 [ext_resource type="Texture2D" uid="uid://bp86kqoivwqui" path="res://Photos/IntroScene1.png" id="1_l74hx"]
-[ext_resource type="FontFile" uid="uid://xcsqkcqh8yb0" path="res://KeyboardFont.TTF" id="2_8snhc"]
-[ext_resource type="Script" uid="uid://osgah80afe0m" path="res://intro_1_cont_button.gd" id="2_47agh"]
+[ext_resource type="FontFile" uid="uid://xcsqkcqh8yb0" path="res://Others/KeyboardFont.TTF" id="2_8snhc"]
+[ext_resource type="Script" uid="uid://osgah80afe0m" path="res://Scripts/intro_1_cont_button.gd" id="2_47agh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2g4dy"]
 bg_color = Color(0.21470258, 0.21470258, 0.21470246, 1)
@@ -32,7 +32,6 @@ offset_right = 467.0
 offset_bottom = 342.0
 theme = SubResource("Theme_1hblg")
 theme_type_variation = &"TooltipLabel"
-text = "Lorem"
 autowrap_mode = 2
 
 [node name="Panel" type="Panel" parent="IntroScene1"]
