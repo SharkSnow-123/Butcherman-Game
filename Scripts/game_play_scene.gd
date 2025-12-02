@@ -210,11 +210,15 @@ func undo():
 # SHOW LOSE/WIN
 # ----------------------------------
 func show_end(text):
+	$LosePanel/Lose.visible = false;
+	$LosePanel/Win.visible = false;
 	
 	if text == "YOU LOSE!":
+		$LosePanel/Lose.visible = true;
 		title_label.text = text + "\nThe word was: " + chosen_word
 		last_round_result = "lose"
 	else:
+		$LosePanel/Win.visible = true;
 		title_label.text = text
 		last_round_result = "win"
 	
