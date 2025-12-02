@@ -17,11 +17,13 @@ var hidden := []
 var guessed_letters := []
 var wrong_guesses := 0
 var undo_stack := []          # using built-in Array for undo snapshots
+var redo_stack := []          # ^^
 var current_day := 1
 const MAX_DAYS := 3
 var last_round_result : String = ""   # "win" or "lose"
 var currentHealth: int = MAX_GUESSES
 var undoCtr = 0;
+var redoCtr = 0;
 
 
 # --- UI ---
@@ -29,6 +31,7 @@ var undoCtr = 0;
 @onready var guessed_label = $GuessedLetters
 @onready var letters = $Letters
 @onready var undo_button = $UndoButton
+@onready var redo_button = $RedoButton
 @onready var lose_panel = $LosePanel
 @onready var title_label = $LosePanel/Title
 @onready var continue_button = $LosePanel/ContinueButton
@@ -48,6 +51,7 @@ func start_game():
 	currentHealth = MAX_GUESSES
 	wrong_guesses = 0
 	undoCtr = 0
+	redoCtr = 0
 	guessed_letters.clear()
 	undo_stack.clear()
 
@@ -88,6 +92,7 @@ func connect_buttons():
 
 	# other buttons
 	undo_button.pressed.connect(undo)
+	redo_button.pressed.connect(redo)
 	continue_button.pressed.connect(_on_continue_pressed)
 	return_button.pressed.connect(_on_return_main_pressed)
 
@@ -156,7 +161,7 @@ func handle_letter(letter):
 
 	if correct:
 		if "_" not in hidden:
-			show_end("         YOU WIN!\n Don’t let it go to ur head.")
+			show_end("          YOU WIN!\n Don't let it get to your head.")
 	else:
 		wrong_guesses += 1
 		currentHealth -= 1
@@ -190,7 +195,15 @@ func undo():
 	if undo_stack.is_empty():
 		print("[UNDO] No more undo")
 		return
-
+	
+	var redo_snapshot = {
+		"hidden": hidden.duplicate(),
+		"guessed": guessed_letters.duplicate(),
+		"wrong": wrong_guesses,
+		"currentH": currentHealth
+	}
+	redo_stack.append(redo_snapshot)
+	
 	var state = undo_stack.pop_back()
 	hidden = state.hidden
 	guessed_letters = state.guessed
@@ -198,6 +211,7 @@ func undo():
 	currentHealth = state.currentH
 	
 	undoCtr += 1
+	#redoCtr = 0;
 	update_ui()
 	update_health_display()
 	print("[UNDO] restored state; undo stack size =", undo_stack.size())
@@ -205,18 +219,56 @@ func undo():
 	update_ui()
 	print("[UNDO] restored state; undo stack size =", undo_stack.size())
 
+# ----------------------------------
+# REDO
+# ----------------------------------
+
+func redo():
+	if redoCtr == 2:
+		return
+	
+	if redo_stack.is_empty():
+		print("[REDO] No more redo")
+		return
+	
+	var redo_snapshot = {
+		"hidden": hidden.duplicate(),
+		"guessed": guessed_letters.duplicate(),
+		"wrong": wrong_guesses,
+		"currentH": currentHealth
+	}
+	undo_stack.append(redo_snapshot)
+	
+	var state = redo_stack.pop_back()
+	hidden = state.hidden
+	guessed_letters = state.guessed
+	wrong_guesses = state.wrong
+	currentHealth = state.currentH
+	
+	redoCtr += 1
+	#undoCtr = 0
+	
+	update_ui()
+	update_health_display()
+	print("[REDO] restored state; redo stack size =", redo_stack.size())
 
 # ----------------------------------
 # SHOW LOSE/WIN
 # ----------------------------------
 func show_end(text):
+	$LosePanel/Lose.visible = false;
+	$LosePanel/Win.visible = false;
+	
 	if text == "YOU LOSE!":
+		$LosePanel/Lose.visible = true;
 		title_label.text = text + "\nThe word was: " + chosen_word
 		last_round_result = "lose"
 	else:
+		$LosePanel/Win.visible = true;
 		title_label.text = text
 		last_round_result = "win"
-
+	
+	
 	lose_panel.visible = true
 	print("[GAME END] " + title_label.text, " | result =", last_round_result)
 
