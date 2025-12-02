@@ -187,7 +187,7 @@ func save_state():
 	}
 	undo_stack.append(snapshot)
 	print("[SAVE] saved state; undo stack size =", undo_stack.size())
-
+	print("[SAVE] saved state; redo stack size =", redo_stack.size())
 
 func undo():
 	if undoCtr == 2:
@@ -219,6 +219,7 @@ func undo():
 
 	update_ui()
 	print("[UNDO] restored state; undo stack size =", undo_stack.size())
+	print("[SAVE] saved state; redo stack size =", redo_stack.size())
 
 # ----------------------------------
 # REDO
