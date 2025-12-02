@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://8eorouef8qig"]
 
-[ext_resource type="Script" uid="uid://ihy3vfqxnvrl" path="res://Scripts/main.gd" id="1_bo1nx"]
+[ext_resource type="Script" uid="uid://ihy3vfqxnvrl" path="res://main.gd" id="1_bo1nx"]
 [ext_resource type="Texture2D" uid="uid://d16ld3yvkw8eb" path="res://Photos/Butcherman.png" id="2_bo1nx"]
 [ext_resource type="Texture2D" uid="uid://buxx7u7yn5b5c" path="res://Music/music on.png" id="3_8gbba"]
 [ext_resource type="Texture2D" uid="uid://cfcjelys0mbqg" path="res://Music/music off.png" id="4_jjvhh"]
