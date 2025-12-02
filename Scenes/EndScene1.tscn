@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://clwxwihgsyxdu"]
 
-[ext_resource type="Script" uid="uid://cb7eurk6tf3i8" path="res://end_scene_1.gd" id="1_vhu5x"]
+[ext_resource type="Script" uid="uid://cb7eurk6tf3i8" path="res://Scripts/end_scene_1.gd" id="1_vhu5x"]
 [ext_resource type="Texture2D" uid="uid://d1rsy30pxtsu0" path="res://Photos/FreedomScene.jpeg" id="2_356jh"]
 
 [sub_resource type="Theme" id="Theme_mt4b3"]

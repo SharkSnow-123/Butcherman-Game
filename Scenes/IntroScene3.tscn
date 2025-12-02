@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://cu7ra8br4pu"]
+
+[ext_resource type="Texture2D" uid="uid://bgkb163l8pyh5" path="res://Photos/Scene3.png" id="1_wvr81"]
+[ext_resource type="FontFile" uid="uid://xcsqkcqh8yb0" path="res://KeyboardFont.TTF" id="2_wvr81"]
+[ext_resource type="Script" uid="uid://djjoyt55r1iyl" path="res://Scenes/intro_3_cont_button.gd" id="3_wvr81"]
+
+[sub_resource type="Theme" id="Theme_d3y3p"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iwugj"]
+bg_color = Color(0.21568628, 0.21568628, 0.21568628, 1)
+
+[node name="IntroScene3" type="Node2D"]
+
+[node name="Dismembered(5)" type="Sprite2D" parent="."]
+position = Vector2(512, 384)
+texture = ExtResource("1_wvr81")
+
+[node name="StoryText" type="Label" parent="Dismembered(5)"]
+offset_left = -417.0
+offset_top = 255.0
+offset_right = 496.0
+offset_bottom = 373.0
+theme = SubResource("Theme_d3y3p")
+theme_type_variation = &"TooltipLabel"
+text = "Lorem"
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Intro3_ContButton" type="Button" parent="Dismembered(5)"]
+offset_left = 316.0
+offset_top = 287.0
+offset_right = 457.0
+offset_bottom = 334.0
+theme_override_fonts/font = ExtResource("2_wvr81")
+theme_override_styles/normal = SubResource("StyleBoxFlat_iwugj")
+text = "Continue"
+script = ExtResource("3_wvr81")
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="Dismembered(5)"]
+visible = false
+offset_left = -728.0
+offset_top = 109.0
+offset_right = 323.0
+offset_bottom = 263.0
+
+[connection signal="pressed" from="Dismembered(5)/Intro3_ContButton" to="Dismembered(5)/Intro3_ContButton" method="_on_pressed"]

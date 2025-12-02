@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://d0yg1xr46lje1"]
+[gd_scene load_steps=7 format=3 uid="uid://cosfailf6gcr"]
 
 [ext_resource type="Texture2D" uid="uid://dfbjiv0yj88kh" path="res://Photos/ProtoType2.jpeg" id="1_3527d"]
 [ext_resource type="Script" uid="uid://brm7p6gshbjpu" path="res://game_play_scene.gd" id="1_xdn27"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cml7krljcmk34"]
 
 [ext_resource type="Texture2D" uid="uid://ct2nkttk3myx1" path="res://Photos/Captured.jpeg" id="1_cfnqe"]
-[ext_resource type="Script" uid="uid://osgah80afe0m" path="res://continue_button.gd" id="2_cfnqe"]
+[ext_resource type="Script" uid="uid://osgah80afe0m" path="res://intro_2_cont_button.gd" id="2_cfnqe"]
 
 [sub_resource type="Theme" id="Theme_1hblg"]
 
