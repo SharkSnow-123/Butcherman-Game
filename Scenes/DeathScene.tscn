@@ -1,46 +1,36 @@
-[gd_scene load_steps=4 format=3 uid="uid://bh5xjnjosm8xp"]
+[gd_scene load_steps=5 format=3 uid="uid://bh5xjnjosm8xp"]
 
-[ext_resource type="Script" uid="uid://dya1q8ride4n0" path="res://Scripts/death_scene.gd" id="1_6brm5"]
-[ext_resource type="Texture2D" uid="uid://doreobyorww80" path="res://Photos/Lose.jpeg" id="2_6brm5"]
+[ext_resource type="Script" uid="uid://dya1q8ride4n0" path="res://death_scene.gd" id="1_6brm5"]
+[ext_resource type="Texture2D" uid="uid://bx4fabniid0s3" path="res://Photos/LOSTSCENE.png" id="2_2hyne"]
+[ext_resource type="FontFile" uid="uid://cgl1uqp4uqud0" path="res://Others/ButtonFont.TTF" id="3_cdvjj"]
 
-[sub_resource type="Theme" id="Theme_6brm5"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cdvjj"]
+bg_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.46666667, 0.46666667, 0.46666667, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_6brm5")
 
-[node name="4e7Fc28532744Dde99DeAca50Bba7Bc3" type="Sprite2D" parent="."]
-position = Vector2(513.49994, 274.5)
-scale = Vector2(0.6861167, 0.8962585)
-texture = ExtResource("2_6brm5")
+[node name="Lostscene" type="Sprite2D" parent="."]
+position = Vector2(512, 385)
+texture = ExtResource("2_2hyne")
 
-[node name="Panel" type="Panel" parent="."]
-offset_left = 1.0
-offset_top = 541.0
-offset_right = 1159.0
-offset_bottom = 695.0
-metadata/_edit_use_anchors_ = true
-
-[node name="EndButton" type="Button" parent="Panel"]
-layout_mode = 0
-offset_left = 960.0
-offset_top = 97.0
-offset_right = 1133.0
-offset_bottom = 136.0
+[node name="losttomain" type="Button" parent="."]
+offset_left = 326.0
+offset_top = 649.0
+offset_right = 694.0
+offset_bottom = 715.0
+theme_override_fonts/font = ExtResource("3_cdvjj")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_cdvjj")
 text = "Return to Main Menu"
-metadata/_edit_use_anchors_ = true
 
-[node name="StoryText" type="Label" parent="Panel"]
-layout_mode = 0
-offset_left = 24.0
-offset_top = 7.0
-offset_right = 974.0
-offset_bottom = 134.0
-theme = SubResource("Theme_6brm5")
-theme_type_variation = &"TooltipLabel"
-text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor neque at magna sodales, id interdum erat facilisis. Curabitur egestas nisi vitae turpis fermentum, non consequat velit luctus.
-Medium (3 paragraphs):
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean faucibus, dolor at pulvinar porta, massa nisl tincidunt lacus, id finibus nisi metus vel purus. Suspendisse potenti. Vivamus facilisis ex non nisl pretium, ac gravida urna luctus."
-autowrap_mode = 2
-metadata/_edit_use_anchors_ = true
-
-[connection signal="pressed" from="Panel/EndButton" to="." method="_on_end_button_pressed"]
+[connection signal="pressed" from="losttomain" to="." method="_on_losttomain_pressed"]
