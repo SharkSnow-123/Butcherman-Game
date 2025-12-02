@@ -54,6 +54,7 @@ func start_game():
 	redoCtr = 0
 	guessed_letters.clear()
 	undo_stack.clear()
+	redo_stack.clear()
 
 	# choose a word based on current day
 	chosen_word = _get_word_for_day()
