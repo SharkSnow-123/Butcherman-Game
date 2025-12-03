@@ -19,6 +19,7 @@ config/icon="uid://8xns13l2v8sx"
 
 MusicPlayer="*res://Global/music_player.gd"
 TransitionScreen="*res://Global/Transition_Scene/transition_screen.tscn"
+DialogueManager="*res://Global/dialogue_manager.tscn"
 
 [display]
 

@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://cu7ra8br4pu"]
 
-[ext_resource type="Script" uid="uid://8r3gcnu2hd14" path="res://Scenes/intro_scene_transition.gd" id="1_d3y3p"]
+[ext_resource type="Script" uid="uid://3t803ggj8430" path="res://Scenes/intro_scene_3_dialogues.gd" id="1_d3y3p"]
 [ext_resource type="Texture2D" uid="uid://bgkb163l8pyh5" path="res://Photos/Scene3.png" id="1_wvr81"]
-[ext_resource type="FontFile" uid="uid://xcsqkcqh8yb0" path="res://KeyboardFont.TTF" id="2_wvr81"]
-[ext_resource type="Script" uid="uid://djjoyt55r1iyl" path="res://Scenes/intro_3_cont_button.gd" id="3_wvr81"]
+[ext_resource type="FontFile" uid="uid://xcsqkcqh8yb0" path="res://Others/KeyboardFont.TTF" id="2_wvr81"]
+[ext_resource type="Script" uid="uid://djjoyt55r1iyl" path="res://Scripts/intro_3_cont_button.gd" id="3_wvr81"]
 
 [sub_resource type="Theme" id="Theme_d3y3p"]
 
@@ -17,23 +17,23 @@ script = ExtResource("1_d3y3p")
 position = Vector2(512, 384)
 texture = ExtResource("1_wvr81")
 
-[node name="StoryText" type="Label" parent="."]
-offset_left = 95.0
-offset_top = 639.0
-offset_right = 1008.0
-offset_bottom = 757.0
-theme = SubResource("Theme_d3y3p")
-theme_type_variation = &"TooltipLabel"
-text = "Lorem"
-autowrap_mode = 2
-metadata/_edit_use_anchors_ = true
-
 [node name="Panel" type="Panel" parent="."]
 visible = false
 offset_left = -216.0
 offset_top = 493.0
 offset_right = 835.0
 offset_bottom = 647.0
+
+[node name="StoryText" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 311.0
+offset_top = 146.0
+offset_right = 1224.0
+offset_bottom = 264.0
+theme = SubResource("Theme_d3y3p")
+theme_type_variation = &"TooltipLabel"
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="Intro3_ContButton" type="Button" parent="."]
 offset_left = 841.0
