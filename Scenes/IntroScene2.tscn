@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://bm0miw52yrtj4"]
+[gd_scene load_steps=7 format=3 uid="uid://bm0miw52yrtj4"]
 
+[ext_resource type="Script" uid="uid://8r3gcnu2hd14" path="res://Scenes/intro_scene_transition.gd" id="1_51hp2"]
 [ext_resource type="Texture2D" uid="uid://bp86kqoivwqui" path="res://Photos/IntroScene1.png" id="1_vsbxp"]
 [ext_resource type="FontFile" uid="uid://xcsqkcqh8yb0" path="res://KeyboardFont.TTF" id="2_51hp2"]
 [ext_resource type="Script" uid="uid://osgah80afe0m" path="res://intro_2_cont_button.gd" id="3_51hp2"]
@@ -9,7 +10,8 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2g4dy"]
 bg_color = Color(0.21470258, 0.21470258, 0.21470246, 1)
 
-[node name="Intro_Scene1" type="Node2D"]
+[node name="Intro_Scene2" type="Node2D"]
+script = ExtResource("1_51hp2")
 
 [node name="IntroScene1" type="Sprite2D" parent="."]
 position = Vector2(511, 383)
