@@ -1,45 +1,46 @@
-[gd_scene load_steps=6 format=3 uid="uid://bm0miw52yrtj4"]
+[gd_scene load_steps=7 format=3 uid="uid://bm0miw52yrtj4"]
 
-[ext_resource type="Texture2D" uid="uid://cgmh63m7dor72" path="res://Photos/IntroScene2.png" id="1_vsbxp"]
-[ext_resource type="FontFile" uid="uid://xcsqkcqh8yb0" path="res://Others/KeyboardFont.TTF" id="2_51hp2"]
-[ext_resource type="Script" uid="uid://x73l362kgmyl" path="res://Scenes/intro_2_cont_button.gd" id="3_vsbxp"]
+[ext_resource type="Script" uid="uid://8r3gcnu2hd14" path="res://Scenes/intro_scene_transition.gd" id="1_51hp2"]
+[ext_resource type="Texture2D" uid="uid://bp86kqoivwqui" path="res://Photos/IntroScene1.png" id="1_vsbxp"]
+[ext_resource type="FontFile" uid="uid://xcsqkcqh8yb0" path="res://KeyboardFont.TTF" id="2_51hp2"]
+[ext_resource type="Script" uid="uid://osgah80afe0m" path="res://intro_2_cont_button.gd" id="3_51hp2"]
 
-[sub_resource type="Theme" id="Theme_qs6rl"]
+[sub_resource type="Theme" id="Theme_1hblg"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bb8pk"]
-bg_color = Color(0.21568628, 0.21568628, 0.21568628, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2g4dy"]
+bg_color = Color(0.21470258, 0.21470258, 0.21470246, 1)
 
-[node name="IntroScene2" type="Node2D"]
+[node name="Intro_Scene2" type="Node2D"]
+script = ExtResource("1_51hp2")
 
-[node name="Dismembered(5)" type="Sprite2D" parent="."]
-position = Vector2(512, 384)
+[node name="IntroScene1" type="Sprite2D" parent="."]
+position = Vector2(511, 383)
 texture = ExtResource("1_vsbxp")
 
-[node name="StoryText" type="Label" parent="Dismembered(5)"]
-offset_left = -417.0
-offset_top = 255.0
-offset_right = 496.0
-offset_bottom = 373.0
-theme = SubResource("Theme_qs6rl")
+[node name="Panel" type="Panel" parent="."]
+visible = false
+offset_left = 265.0
+offset_top = 526.0
+offset_right = 1316.0
+offset_bottom = 680.0
+
+[node name="StoryText" type="Label" parent="."]
+offset_left = 46.0
+offset_top = 604.0
+offset_right = 986.0
+offset_bottom = 716.0
+theme = SubResource("Theme_1hblg")
 theme_type_variation = &"TooltipLabel"
-text = "Lorem"
 autowrap_mode = 2
 
-[node name="Intro2_ContButton" type="Button" parent="Dismembered(5)"]
-offset_left = 316.0
-offset_top = 287.0
-offset_right = 457.0
-offset_bottom = 334.0
+[node name="Intro2_ContButton" type="Button" parent="."]
+offset_left = 842.0
+offset_top = 678.0
+offset_right = 981.0
+offset_bottom = 724.0
 theme_override_fonts/font = ExtResource("2_51hp2")
-theme_override_styles/normal = SubResource("StyleBoxFlat_bb8pk")
+theme_override_styles/normal = SubResource("StyleBoxFlat_2g4dy")
 text = "Continue"
-script = ExtResource("3_vsbxp")
+script = ExtResource("3_51hp2")
 
-[node name="Panel" type="Panel" parent="Dismembered(5)"]
-visible = false
-offset_left = -728.0
-offset_top = 109.0
-offset_right = 323.0
-offset_bottom = 263.0
-
-[connection signal="pressed" from="Dismembered(5)/Intro2_ContButton" to="Dismembered(5)/Intro2_ContButton" method="_on_pressed"]
+[connection signal="pressed" from="Intro2_ContButton" to="Intro2_ContButton" method="_on_pressed"]

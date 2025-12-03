@@ -1,21 +1,21 @@
 [gd_scene load_steps=26 format=3 uid="uid://d0yg1xr46lje1"]
 
-[ext_resource type="Script" uid="uid://brm7p6gshbjpu" path="res://Scripts/game_play_scene.gd" id="1_q0gqs"]
+[ext_resource type="Script" uid="uid://brm7p6gshbjpu" path="res://game_play_scene.gd" id="1_q0gqs"]
 [ext_resource type="Texture2D" uid="uid://bkrd4h3hptpd2" path="res://Photos/GamePlayScene.png" id="2_frxao"]
-[ext_resource type="FontFile" uid="uid://xcsqkcqh8yb0" path="res://Others/KeyboardFont.TTF" id="3_4jtd1"]
-[ext_resource type="FontFile" uid="uid://cgl1uqp4uqud0" path="res://Others/ButtonFont.TTF" id="4_ftlg0"]
+[ext_resource type="FontFile" uid="uid://xcsqkcqh8yb0" path="res://KeyboardFont.TTF" id="3_4jtd1"]
+[ext_resource type="FontFile" uid="uid://cgl1uqp4uqud0" path="res://ButtonFont.TTF" id="4_ftlg0"]
 [ext_resource type="Texture2D" uid="uid://dyb7wbnvudins" path="res://Photos/Lose.png" id="5_l37oj"]
 [ext_resource type="Texture2D" uid="uid://ciihkhkvppyex" path="res://Photos/Lives/Head.png" id="5_rfioy"]
 [ext_resource type="Texture2D" uid="uid://cdm3l37hjgfjd" path="res://Photos/Lives/Left Foot.png" id="6_l37oj"]
 [ext_resource type="Texture2D" uid="uid://dilfyhoor25sx" path="res://Photos/Win.png" id="6_ydirw"]
-[ext_resource type="Texture2D" uid="uid://bi1scb4rsjoku" path="res://Photos/Health_GUI/CurrHealth_1.png" id="7_ydirw"]
-[ext_resource type="Texture2D" uid="uid://chfjvtid856r2" path="res://Photos/Health_GUI/CurrHealth_2.png" id="8_vx3cq"]
-[ext_resource type="Texture2D" uid="uid://dcagkrxa2uftj" path="res://Photos/Health_GUI/CurrHealth_3.png" id="9_75wbv"]
-[ext_resource type="Texture2D" uid="uid://dcn1s6pcbiimh" path="res://Hearts_GUI/currHealth_1.png" id="12_uob7q"]
-[ext_resource type="Texture2D" uid="uid://cxpga7cwuiiu" path="res://Hearts_GUI/currHealth_2.png" id="13_7asqj"]
-[ext_resource type="Texture2D" uid="uid://ec11bqe3cwqx" path="res://Hearts_GUI/currHealth_3.png" id="14_xgw85"]
-[ext_resource type="Texture2D" uid="uid://c3gkstkd0qny6" path="res://Hearts_GUI/currHealth_4.png" id="15_v0ehj"]
-[ext_resource type="Texture2D" uid="uid://b3dmgb401eehk" path="res://Hearts_GUI/currHealth_5.png" id="16_en5oy"]
+[ext_resource type="Texture2D" uid="uid://bi1scb4rsjoku" path="res://Photos/Lives/Right Hand.png" id="7_ydirw"]
+[ext_resource type="Texture2D" uid="uid://chfjvtid856r2" path="res://Photos/Lives/Left Hand.png" id="8_vx3cq"]
+[ext_resource type="Texture2D" uid="uid://dcagkrxa2uftj" path="res://Photos/Lives/Right Foot.png" id="9_75wbv"]
+[ext_resource type="Texture2D" uid="uid://ccbqc31xassw7" path="res://Hearts_GUI/bar_1.png" id="12_uob7q"]
+[ext_resource type="Texture2D" uid="uid://dgjp24c4ffp3t" path="res://Hearts_GUI/bar_2.png" id="13_7asqj"]
+[ext_resource type="Texture2D" uid="uid://b288xwpkgtnsw" path="res://Hearts_GUI/bar_3.png" id="14_xgw85"]
+[ext_resource type="Texture2D" uid="uid://bm2c772laos2" path="res://Hearts_GUI/bar_4.png" id="15_v0ehj"]
+[ext_resource type="Texture2D" uid="uid://bpicx3q3jww5n" path="res://Hearts_GUI/bar_5.png" id="16_en5oy"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ftlg0"]
 bg_color = Color(0, 0, 0, 1)
@@ -305,26 +305,36 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_ftlg0")
 text = "Z"
 
 [node name="DayFrame" type="Label" parent="."]
-offset_left = 31.0
-offset_top = 36.0
-offset_right = 126.0
-offset_bottom = 79.0
+offset_left = 33.0
+offset_top = 30.0
+offset_right = 122.0
+offset_bottom = 80.0
 theme = SubResource("Theme_a7xop")
 theme_type_variation = &"HeaderLarge"
 theme_override_fonts/font = ExtResource("3_4jtd1")
+theme_override_font_sizes/font_size = 24
 text = "Day 1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="UndoButton" type="Button" parent="."]
-offset_left = 207.0
-offset_top = 404.0
-offset_right = 331.0
-offset_bottom = 455.0
+offset_left = 104.0
+offset_top = 410.0
+offset_right = 228.0
+offset_bottom = 461.0
 theme_override_fonts/font = ExtResource("3_4jtd1")
 theme_override_font_sizes/font_size = 22
 text = "UNDO
 "
+
+[node name="RedoButton" type="Button" parent="."]
+offset_left = 310.0
+offset_top = 411.0
+offset_right = 434.0
+offset_bottom = 462.0
+theme_override_fonts/font = ExtResource("3_4jtd1")
+theme_override_font_sizes/font_size = 22
+text = "REDO"
 
 [node name="WordLabel" type="Label" parent="."]
 material = SubResource("CanvasItemMaterial_3527d")
@@ -451,42 +461,42 @@ texture = ExtResource("9_75wbv")
 [node name="CanvasGroup" type="CanvasGroup" parent="."]
 
 [node name="Health1" type="TextureRect" parent="CanvasGroup"]
-offset_left = 522.0
-offset_top = 11.0
-offset_right = 1012.0
-offset_bottom = 81.0
+offset_left = 702.0
+offset_top = 30.0
+offset_right = 991.0
+offset_bottom = 68.0
 texture = ExtResource("12_uob7q")
 expand_mode = 1
 
 [node name="Health2" type="TextureRect" parent="CanvasGroup"]
-offset_left = 522.0
-offset_top = 11.0
-offset_right = 1012.0
-offset_bottom = 81.0
+offset_left = 702.0
+offset_top = 30.0
+offset_right = 991.0
+offset_bottom = 68.0
 texture = ExtResource("13_7asqj")
 expand_mode = 1
 
 [node name="Health3" type="TextureRect" parent="CanvasGroup"]
-offset_left = 522.0
-offset_top = 11.0
-offset_right = 1012.0
-offset_bottom = 81.0
+offset_left = 702.0
+offset_top = 30.0
+offset_right = 991.0
+offset_bottom = 68.0
 texture = ExtResource("14_xgw85")
 expand_mode = 1
 
 [node name="Health4" type="TextureRect" parent="CanvasGroup"]
-offset_left = 522.0
-offset_top = 11.0
-offset_right = 1012.0
-offset_bottom = 81.0
+offset_left = 702.0
+offset_top = 30.0
+offset_right = 991.0
+offset_bottom = 68.0
 texture = ExtResource("15_v0ehj")
 expand_mode = 1
 
 [node name="Health5" type="TextureRect" parent="CanvasGroup"]
-offset_left = 522.0
-offset_top = 11.0
-offset_right = 1012.0
-offset_bottom = 81.0
+offset_left = 702.0
+offset_top = 30.0
+offset_right = 991.0
+offset_bottom = 68.0
 texture = ExtResource("16_en5oy")
 expand_mode = 1
 
