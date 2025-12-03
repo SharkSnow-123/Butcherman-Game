@@ -15,33 +15,33 @@ bg_color = Color(0.21568628, 0.21568628, 0.21568628, 1)
 position = Vector2(512, 384)
 texture = ExtResource("1_wvr81")
 
-[node name="StoryText" type="Label" parent="Dismembered(5)"]
-offset_left = -417.0
-offset_top = 255.0
-offset_right = 496.0
-offset_bottom = 373.0
+[node name="StoryText" type="Label" parent="."]
+offset_left = 95.0
+offset_top = 639.0
+offset_right = 1008.0
+offset_bottom = 757.0
 theme = SubResource("Theme_d3y3p")
 theme_type_variation = &"TooltipLabel"
 text = "Lorem"
 autowrap_mode = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Intro3_ContButton" type="Button" parent="Dismembered(5)"]
-offset_left = 316.0
-offset_top = 287.0
-offset_right = 457.0
-offset_bottom = 334.0
+[node name="Panel" type="Panel" parent="."]
+visible = false
+offset_left = -216.0
+offset_top = 493.0
+offset_right = 835.0
+offset_bottom = 647.0
+
+[node name="Intro3_ContButton" type="Button" parent="."]
+offset_left = 841.0
+offset_top = 678.0
+offset_right = 982.0
+offset_bottom = 725.0
 theme_override_fonts/font = ExtResource("2_wvr81")
 theme_override_styles/normal = SubResource("StyleBoxFlat_iwugj")
 text = "Continue"
 script = ExtResource("3_wvr81")
 metadata/_edit_use_anchors_ = true
 
-[node name="Panel" type="Panel" parent="Dismembered(5)"]
-visible = false
-offset_left = -728.0
-offset_top = 109.0
-offset_right = 323.0
-offset_bottom = 263.0
-
-[connection signal="pressed" from="Dismembered(5)/Intro3_ContButton" to="Dismembered(5)/Intro3_ContButton" method="_on_pressed"]
+[connection signal="pressed" from="Intro3_ContButton" to="Intro3_ContButton" method="_on_pressed"]

@@ -4,41 +4,41 @@
 [ext_resource type="FontFile" uid="uid://xcsqkcqh8yb0" path="res://KeyboardFont.TTF" id="2_51hp2"]
 [ext_resource type="Script" uid="uid://osgah80afe0m" path="res://intro_2_cont_button.gd" id="3_51hp2"]
 
+[sub_resource type="Theme" id="Theme_1hblg"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2g4dy"]
 bg_color = Color(0.21470258, 0.21470258, 0.21470246, 1)
-
-[sub_resource type="Theme" id="Theme_1hblg"]
 
 [node name="Intro_Scene1" type="Node2D"]
 
 [node name="IntroScene1" type="Sprite2D" parent="."]
-position = Vector2(514, 385)
+position = Vector2(511, 383)
 texture = ExtResource("1_vsbxp")
 
-[node name="Intro2_ContButton" type="Button" parent="IntroScene1"]
-offset_left = 281.0
-offset_top = 280.0
-offset_right = 422.0
-offset_bottom = 327.0
+[node name="Panel" type="Panel" parent="."]
+visible = false
+offset_left = 265.0
+offset_top = 526.0
+offset_right = 1316.0
+offset_bottom = 680.0
+
+[node name="StoryText" type="Label" parent="."]
+offset_left = 46.0
+offset_top = 604.0
+offset_right = 986.0
+offset_bottom = 716.0
+theme = SubResource("Theme_1hblg")
+theme_type_variation = &"TooltipLabel"
+autowrap_mode = 2
+
+[node name="Intro2_ContButton" type="Button" parent="."]
+offset_left = 842.0
+offset_top = 678.0
+offset_right = 981.0
+offset_bottom = 724.0
 theme_override_fonts/font = ExtResource("2_51hp2")
 theme_override_styles/normal = SubResource("StyleBoxFlat_2g4dy")
 text = "Continue"
 script = ExtResource("3_51hp2")
 
-[node name="StoryText" type="Label" parent="IntroScene1"]
-offset_left = -430.0
-offset_top = 230.0
-offset_right = 467.0
-offset_bottom = 342.0
-theme = SubResource("Theme_1hblg")
-theme_type_variation = &"TooltipLabel"
-autowrap_mode = 2
-
-[node name="Panel" type="Panel" parent="IntroScene1"]
-visible = false
-offset_left = -246.0
-offset_top = 143.0
-offset_right = 805.0
-offset_bottom = 297.0
-
-[connection signal="pressed" from="IntroScene1/Intro2_ContButton" to="IntroScene1/Intro2_ContButton" method="_on_pressed"]
+[connection signal="pressed" from="Intro2_ContButton" to="Intro2_ContButton" method="_on_pressed"]
