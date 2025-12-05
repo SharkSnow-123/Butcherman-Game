@@ -1,5 +1,6 @@
 extends Node
-
+const RecodeLowLevel = preload("res://Scripts/stack_low_level.gd")
+var ArrayLowLevel = preload("res://Scripts/array_low_level.gd").new()
 #--- Notes ---
 # Hello, greetings to whoever is reading this. This is merely a prototype and there's a lot of things to implement to. 
 # UNDO is still built-in, not manually coded to see how the game works. So, as arrays.
@@ -11,17 +12,28 @@ var word_list_day1 = ["APPLE", "ROBOT", "SNAKE"]
 var word_list_day2 = ["WATERFALL", "NOTEBOOK", "PYTHON"]
 var word_list_day3 = ["ASTRONOMY", "COMPUTER", "VOLCANO"]
 
+# --- LOW LEVEL SETTINGS ---
+#const MAX_WORD_SIZE := 32
+#const MAX_GUESSED := 32
+#var hidden := []
+#var hidden_size := 0
+#var guessed_letters := []
+#var guessed_size := 0
+var undo_stack : RecodeLowLevel          # using built-in Array for undo snapshots
+var redo_stack : RecodeLowLevel          # ^^
+var undoCtr = 0;
+var redoCtr = 0;
+
+
 # --- STATE ---
 var chosen_word := ""
-var hidden := []
-var guessed_letters := []
+#var hidden := []
+#var guessed_letters := []
 var wrong_guesses := 0
-var undo_stack := []          # using built-in Array for undo snapshots
 var current_day := 1
 const MAX_DAYS := 3
 var last_round_result : String = ""   # "win" or "lose"
 var currentHealth: int = MAX_GUESSES
-var undoCtr = 0;
 
 
 # --- UI ---
@@ -29,6 +41,7 @@ var undoCtr = 0;
 @onready var guessed_label = $GuessedLetters
 @onready var letters = $Letters
 @onready var undo_button = $UndoButton
+@onready var redo_button = $RedoButton
 @onready var lose_panel = $LosePanel
 @onready var title_label = $LosePanel/Title
 @onready var continue_button = $LosePanel/ContinueButton
@@ -36,6 +49,13 @@ var undoCtr = 0;
 @onready var day_frame = $DayFrame
 
 func _ready():
+	#hidden.resize(MAX_WORD_SIZE)
+	#guessed_letters.resize(MAX_GUESSED)
+	ArrayLowLevel.hidden.resize(ArrayLowLevel.MAX_WORD_SIZE)
+	ArrayLowLevel.guessed_letters.resize(ArrayLowLevel.MAX_GUESSED)
+	
+	undo_stack = RecodeLowLevel.new(50)
+	redo_stack = RecodeLowLevel.new(50)
 	randomize()
 	connect_buttons()
 	start_game()
@@ -48,14 +68,20 @@ func start_game():
 	currentHealth = MAX_GUESSES
 	wrong_guesses = 0
 	undoCtr = 0
-	guessed_letters.clear()
+	redoCtr = 0
+	#guessed_letters.clear()
+	ArrayLowLevel.clear_guessed()
+	ArrayLowLevel.clear_hidden()
 	undo_stack.clear()
+	redo_stack.clear()
 
 	# choose a word based on current day
 	chosen_word = _get_word_for_day()
-	hidden.clear()
+	#hidden.clear()
+	
 	for c in chosen_word:
-		hidden.append("_")
+		ArrayLowLevel.hidden_push("_")
+		#hidden.append("_")
 
 	update_ui()
 	update_health_display()
@@ -88,6 +114,7 @@ func connect_buttons():
 
 	# other buttons
 	undo_button.pressed.connect(undo)
+	redo_button.pressed.connect(redo)
 	continue_button.pressed.connect(_on_continue_pressed)
 	return_button.pressed.connect(_on_return_main_pressed)
 
@@ -96,8 +123,10 @@ func connect_buttons():
 # UPDATE DISPLAY
 # ----------------------------------
 func update_ui():
-	word_label.text = " ".join(hidden)
-	guessed_label.text = "Guessed: " + ", ".join(guessed_letters)
+	#word_label.text = " ".join(hidden)
+	word_label.text = ArrayLowLevel.build_hidden()
+	#guessed_label.text = "Guessed: " + ", ".join(guessed_letters)
+	guessed_label.text = "Guessed: " + ArrayLowLevel.build_guessed()
 
 
 func _update_day_display():
@@ -129,44 +158,52 @@ func update_health_display():
 		print("Heart State: ", hearts[currentHealth - 1])
 		hearts[currentHealth - 1].visible = true;
 		
-	
-	
+
 # ----------------------------------
 # GUESS LETTER
 # ----------------------------------
 func handle_letter(letter):
 	letter = letter.to_upper()
 
-	if letter in guessed_letters:
+	#if letter in guessed_letters:
+		#return
+	if ArrayLowLevel.guessed_checker(letter):
 		return
 
 	save_state()
 
-	guessed_letters.append(letter)
+	#guessed_letters.append(letter)
+	ArrayLowLevel.guessed_push(letter)
 	update_ui()
 
 	var correct := false
 
 	for i in range(chosen_word.length()):
 		if chosen_word[i] == letter:
-			hidden[i] = letter
+			ArrayLowLevel.hidden[i] = letter
 			correct = true
 
 	update_ui()
-
-	if correct:
-		if "_" not in hidden:
-			show_end("          YOU WIN!\n Don't let it get to your head.")
-	else:
-		wrong_guesses += 1
-		currentHealth -= 1
-		update_health_display()
-		print("[GUESS] Wrong guesses:", wrong_guesses, " / ", MAX_GUESSES)
-		print("[GUESS] Current Health:", currentHealth, " / ", MAX_GUESSES)
-		if wrong_guesses >= MAX_GUESSES:
-			show_end("YOU LOSE!")
-		
 	
+	var _still_blank := false
+	for i in range(ArrayLowLevel.hidden_size):
+		if ArrayLowLevel.hidden[i] == "_":
+			_still_blank = true
+			break
+	
+	if correct:
+		if not _still_blank:
+			show_end("          YOU WIN!\n Don't let it get to your head.")
+		return
+	# else:
+	wrong_guesses += 1
+	currentHealth -= 1
+	update_health_display()
+	print("[GUESS] Wrong guesses:", wrong_guesses, " / ", MAX_GUESSES)
+	print("[GUESS] Current Health:", currentHealth, " / ", MAX_GUESSES)
+	if wrong_guesses >= MAX_GUESSES:
+		show_end("YOU LOSE!")
+
 
 # ----------------------------------
 # UNDO
@@ -174,14 +211,15 @@ func handle_letter(letter):
 func save_state():
 	# store snapshots so undo can fully restore
 	var snapshot = {
-		"hidden": hidden.duplicate(),
-		"guessed": guessed_letters.duplicate(),
+		"hidden": ArrayLowLevel.hidden.duplicate(),
+		"guessed": ArrayLowLevel.guessed_letters.duplicate(),
 		"wrong": wrong_guesses,
 		"currentH": currentHealth
 	}
-	undo_stack.append(snapshot)
-	print("[SAVE] saved state; undo stack size =", undo_stack.size())
-
+	undo_stack.push(snapshot)
+	redo_stack.clear()
+	print("[SAVE] saved state; undo stack size =", undo_stack.size)
+	print("[SAVE] saved state; redo stack size =", redo_stack.size)
 
 func undo():
 	if undoCtr == 2:
@@ -190,33 +228,81 @@ func undo():
 	if undo_stack.is_empty():
 		print("[UNDO] No more undo")
 		return
-
-	var state = undo_stack.pop_back()
-	hidden = state.hidden
-	guessed_letters = state.guessed
+	
+	var redo_snapshot = {
+		"hidden": ArrayLowLevel.hidden.duplicate(),
+		"guessed": ArrayLowLevel.guessed_letters.duplicate(),
+		"wrong": wrong_guesses,
+		"currentH": currentHealth
+	}
+	redo_stack.push(redo_snapshot)
+	
+	var state = undo_stack.pop()
+	ArrayLowLevel.hidden = state.hidden
+	ArrayLowLevel.guessed_letters = state.guessed
 	wrong_guesses = state.wrong
 	currentHealth = state.currentH
 	
 	undoCtr += 1
+	#redoCtr = 0;
 	update_ui()
 	update_health_display()
-	print("[UNDO] restored state; undo stack size =", undo_stack.size())
+	print("[UNDO] restored state; undo stack size =", undo_stack.size)
 
 	update_ui()
-	print("[UNDO] restored state; undo stack size =", undo_stack.size())
+	print("[UNDO] restored state; undo stack size =", undo_stack.size)
+	print("[SAVE] saved state; redo stack size =", redo_stack.size)
 
+# ----------------------------------
+# REDO
+# ----------------------------------
+
+func redo():
+	if redoCtr == 2:
+		return
+	
+	if redo_stack.is_empty():
+		print("[REDO] No more redo")
+		return
+	
+	var redo_snapshot = {
+		"hidden": ArrayLowLevel.hidden.duplicate(),
+		"guessed": ArrayLowLevel.guessed_letters.duplicate(),
+		"wrong": wrong_guesses,
+		"currentH": currentHealth
+	}
+	undo_stack.push(redo_snapshot)
+	
+	var state = redo_stack.pop()
+	ArrayLowLevel.hidden = state.hidden
+	ArrayLowLevel.guessed_letters = state.guessed
+	wrong_guesses = state.wrong
+	currentHealth = state.currentH
+	
+	redoCtr += 1
+	#undoCtr = 0
+	
+	update_ui()
+	update_health_display()
+	print("[REDO] restored state; redo stack size =", redo_stack.size)
 
 # ----------------------------------
 # SHOW LOSE/WIN
 # ----------------------------------
 func show_end(text):
+	$LosePanel/Lose.visible = false;
+	$LosePanel/Win.visible = false;
+	
 	if text == "YOU LOSE!":
+		$LosePanel/Lose.visible = true;
 		title_label.text = text + "\nThe word was: " + chosen_word
 		last_round_result = "lose"
 	else:
+		$LosePanel/Win.visible = true;
 		title_label.text = text
 		last_round_result = "win"
-
+	
+	
 	lose_panel.visible = true
 	print("[GAME END] " + title_label.text, " | result =", last_round_result)
 
