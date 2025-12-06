@@ -1,16 +1,11 @@
-[gd_scene load_steps=25 format=3 uid="uid://d0yg1xr46lje1"]
+[gd_scene load_steps=20 format=3 uid="uid://d0yg1xr46lje1"]
 
 [ext_resource type="Script" uid="uid://brm7p6gshbjpu" path="res://Scripts/game_play_scene.gd" id="1_q0gqs"]
 [ext_resource type="Texture2D" uid="uid://bkrd4h3hptpd2" path="res://Photos/GamePlayScene.png" id="2_frxao"]
 [ext_resource type="FontFile" uid="uid://xcsqkcqh8yb0" path="res://Others/KeyboardFont.TTF" id="3_4jtd1"]
 [ext_resource type="FontFile" uid="uid://cgl1uqp4uqud0" path="res://Others/ButtonFont.TTF" id="4_ftlg0"]
 [ext_resource type="Texture2D" uid="uid://dyb7wbnvudins" path="res://Photos/Lose.png" id="5_l37oj"]
-[ext_resource type="Texture2D" uid="uid://ciihkhkvppyex" path="res://Photos/Health_GUI/CurrHealth_5.png" id="5_rfioy"]
-[ext_resource type="Texture2D" uid="uid://cdm3l37hjgfjd" path="res://Photos/Health_GUI/CurrHealth_4.png" id="6_l37oj"]
 [ext_resource type="Texture2D" uid="uid://dilfyhoor25sx" path="res://Photos/Win.png" id="6_ydirw"]
-[ext_resource type="Texture2D" uid="uid://bi1scb4rsjoku" path="res://Photos/Health_GUI/CurrHealth_1.png" id="7_ydirw"]
-[ext_resource type="Texture2D" uid="uid://chfjvtid856r2" path="res://Photos/Health_GUI/CurrHealth_2.png" id="8_vx3cq"]
-[ext_resource type="Texture2D" uid="uid://dcagkrxa2uftj" path="res://Photos/Health_GUI/CurrHealth_3.png" id="9_75wbv"]
 [ext_resource type="Texture2D" uid="uid://c1ndfo1gae5nd" path="res://Hearts_GUI/bar_1.png" id="12_uob7q"]
 [ext_resource type="Texture2D" uid="uid://b4ahkpp7cbhno" path="res://Hearts_GUI/bar_2.png" id="13_7asqj"]
 [ext_resource type="Texture2D" uid="uid://cn4kv3v1y4yvp" path="res://Hearts_GUI/bar_3.png" id="14_xgw85"]
@@ -423,31 +418,26 @@ autowrap_mode = 2
 visible = false
 position = Vector2(972, 55.5)
 scale = Vector2(0.63999885, 0.65000004)
-texture = ExtResource("5_rfioy")
 
 [node name="LeftFoot" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(904.75006, 56)
 scale = Vector2(0.6299985, 0.6333334)
-texture = ExtResource("6_l37oj")
 
 [node name="RightHand" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(706.5, 55.499996)
 scale = Vector2(0.6199997, 0.61666656)
-texture = ExtResource("7_ydirw")
 
 [node name="LeftHand" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(771, 55)
 scale = Vector2(0.64000106, 0.6333333)
-texture = ExtResource("8_vx3cq")
 
 [node name="RightFoot" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(837.5, 55.5)
 scale = Vector2(0.62000084, 0.6166667)
-texture = ExtResource("9_75wbv")
 
 [node name="CanvasGroup" type="CanvasGroup" parent="."]
 
