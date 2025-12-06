@@ -26,17 +26,18 @@ offset_bottom = 736.0
 [node name="StoryText" type="Label" parent="Panel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.416
-anchor_top = 0.5
-anchor_right = 0.416
-anchor_bottom = 0.5
-offset_left = -381.608
-offset_top = -59.5
-offset_right = 382.392
-offset_bottom = 62.5
+anchor_left = 0.5
+anchor_top = 0.59900004
+anchor_right = 0.5
+anchor_bottom = 0.59900004
+offset_left = -411.5
+offset_top = -43.449005
+offset_right = 447.5
+offset_bottom = 43.550995
 theme = SubResource("Theme_qs6rl")
 theme_type_variation = &"TooltipLabel"
 theme_override_fonts/font = ExtResource("2_8snhc")
+theme_override_font_sizes/font_size = 19
 autowrap_mode = 2
 
 [node name="Intro1_ContButton" type="Button" parent="."]

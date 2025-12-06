@@ -396,22 +396,23 @@ texture = ExtResource("6_ydirw")
 
 [node name="Dialogue_Panel" type="Panel" parent="."]
 offset_left = 191.0
-offset_top = 603.0
-offset_right = 974.0
+offset_top = 598.0
+offset_right = 980.0
 offset_bottom = 722.0
 
 [node name="StoryText" type="Label" parent="Dialogue_Panel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.35500002
+anchor_left = 0.5
 anchor_top = 0.5
-anchor_right = 0.35500002
+anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -269.96503
-offset_top = -58.5
-offset_right = 352.03497
+offset_left = -365.5
+offset_top = -42.0
+offset_right = 368.5
 offset_bottom = 58.5
 theme_override_fonts/font = ExtResource("3_4jtd1")
+theme_override_font_sizes/font_size = 19
 autowrap_mode = 2
 
 [node name="Head" type="Sprite2D" parent="."]
@@ -482,10 +483,10 @@ texture = ExtResource("16_en5oy")
 expand_mode = 1
 
 [node name="ClueButton" type="Button" parent="."]
-offset_left = 833.0
-offset_top = 676.0
-offset_right = 974.0
-offset_bottom = 723.0
+offset_left = 832.0
+offset_top = 668.0
+offset_right = 973.0
+offset_bottom = 715.0
 theme_override_fonts/font = ExtResource("3_4jtd1")
 theme_override_styles/normal = SubResource("StyleBoxFlat_frxao")
 text = "Clue"
