@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bh5xjnjosm8xp"]
 
-[ext_resource type="Script" uid="uid://dya1q8ride4n0" path="res://Scripts/death_scene.gd" id="1_6brm5"]
+[ext_resource type="Script" uid="uid://dya1q8ride4n0" path="res://death_scene.gd" id="1_6brm5"]
 [ext_resource type="Texture2D" uid="uid://bx4fabniid0s3" path="res://Photos/LOSTSCENE.png" id="2_2hyne"]
 [ext_resource type="FontFile" uid="uid://cgl1uqp4uqud0" path="res://Others/ButtonFont.TTF" id="3_cdvjj"]
 

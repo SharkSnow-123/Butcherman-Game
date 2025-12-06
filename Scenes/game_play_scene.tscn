@@ -1,21 +1,21 @@
-[gd_scene load_steps=25 format=3 uid="uid://d0yg1xr46lje1"]
+[gd_scene load_steps=26 format=3 uid="uid://d0yg1xr46lje1"]
 
-[ext_resource type="Script" uid="uid://brm7p6gshbjpu" path="res://Scripts/game_play_scene.gd" id="1_q0gqs"]
+[ext_resource type="Script" uid="uid://brm7p6gshbjpu" path="res://game_play_scene.gd" id="1_q0gqs"]
 [ext_resource type="Texture2D" uid="uid://bkrd4h3hptpd2" path="res://Photos/GamePlayScene.png" id="2_frxao"]
-[ext_resource type="FontFile" uid="uid://xcsqkcqh8yb0" path="res://Others/KeyboardFont.TTF" id="3_4jtd1"]
-[ext_resource type="FontFile" uid="uid://cgl1uqp4uqud0" path="res://Others/ButtonFont.TTF" id="4_ftlg0"]
+[ext_resource type="FontFile" uid="uid://xcsqkcqh8yb0" path="res://KeyboardFont.TTF" id="3_4jtd1"]
+[ext_resource type="FontFile" uid="uid://cgl1uqp4uqud0" path="res://ButtonFont.TTF" id="4_ftlg0"]
 [ext_resource type="Texture2D" uid="uid://dyb7wbnvudins" path="res://Photos/Lose.png" id="5_l37oj"]
-[ext_resource type="Texture2D" uid="uid://ciihkhkvppyex" path="res://Photos/Health_GUI/CurrHealth_5.png" id="5_rfioy"]
-[ext_resource type="Texture2D" uid="uid://cdm3l37hjgfjd" path="res://Photos/Health_GUI/CurrHealth_4.png" id="6_l37oj"]
+[ext_resource type="Texture2D" uid="uid://ciihkhkvppyex" path="res://Photos/Lives/Head.png" id="5_rfioy"]
+[ext_resource type="Texture2D" uid="uid://cdm3l37hjgfjd" path="res://Photos/Lives/Left Foot.png" id="6_l37oj"]
 [ext_resource type="Texture2D" uid="uid://dilfyhoor25sx" path="res://Photos/Win.png" id="6_ydirw"]
-[ext_resource type="Texture2D" uid="uid://bi1scb4rsjoku" path="res://Photos/Health_GUI/CurrHealth_1.png" id="7_ydirw"]
-[ext_resource type="Texture2D" uid="uid://chfjvtid856r2" path="res://Photos/Health_GUI/CurrHealth_2.png" id="8_vx3cq"]
-[ext_resource type="Texture2D" uid="uid://dcagkrxa2uftj" path="res://Photos/Health_GUI/CurrHealth_3.png" id="9_75wbv"]
-[ext_resource type="Texture2D" uid="uid://c1ndfo1gae5nd" path="res://Hearts_GUI/bar_1.png" id="12_uob7q"]
-[ext_resource type="Texture2D" uid="uid://b4ahkpp7cbhno" path="res://Hearts_GUI/bar_2.png" id="13_7asqj"]
-[ext_resource type="Texture2D" uid="uid://cn4kv3v1y4yvp" path="res://Hearts_GUI/bar_3.png" id="14_xgw85"]
-[ext_resource type="Texture2D" uid="uid://cuerutewlmg3r" path="res://Hearts_GUI/bar_4.png" id="15_v0ehj"]
-[ext_resource type="Texture2D" uid="uid://f21hcxkj8fth" path="res://Hearts_GUI/bar_5.png" id="16_en5oy"]
+[ext_resource type="Texture2D" uid="uid://bi1scb4rsjoku" path="res://Photos/Lives/Right Hand.png" id="7_ydirw"]
+[ext_resource type="Texture2D" uid="uid://chfjvtid856r2" path="res://Photos/Lives/Left Hand.png" id="8_vx3cq"]
+[ext_resource type="Texture2D" uid="uid://dcagkrxa2uftj" path="res://Photos/Lives/Right Foot.png" id="9_75wbv"]
+[ext_resource type="Texture2D" uid="uid://ccbqc31xassw7" path="res://Hearts_GUI/bar_1.png" id="12_uob7q"]
+[ext_resource type="Texture2D" uid="uid://dgjp24c4ffp3t" path="res://Hearts_GUI/bar_2.png" id="13_7asqj"]
+[ext_resource type="Texture2D" uid="uid://b288xwpkgtnsw" path="res://Hearts_GUI/bar_3.png" id="14_xgw85"]
+[ext_resource type="Texture2D" uid="uid://bm2c772laos2" path="res://Hearts_GUI/bar_4.png" id="15_v0ehj"]
+[ext_resource type="Texture2D" uid="uid://bpicx3q3jww5n" path="res://Hearts_GUI/bar_5.png" id="16_en5oy"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ftlg0"]
 bg_color = Color(0, 0, 0, 1)
@@ -50,6 +50,8 @@ corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_frxao"]
 bg_color = Color(0.21568628, 0.21568628, 0.21568628, 1)
+
+[sub_resource type="Theme" id="Theme_dli2k"]
 
 [node name="GamePlayScene" type="Node2D"]
 script = ExtResource("1_q0gqs")
@@ -405,18 +407,25 @@ offset_top = 603.0
 offset_right = 974.0
 offset_bottom = 722.0
 
-[node name="StoryText" type="Label" parent="Dialogue_Panel"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.35500002
-anchor_top = 0.5
-anchor_right = 0.35500002
-anchor_bottom = 0.5
-offset_left = -269.96503
-offset_top = -58.5
-offset_right = 352.03497
-offset_bottom = 58.5
+[node name="Game_contButton" type="Button" parent="Dialogue_Panel"]
+layout_mode = 0
+offset_left = 642.0
+offset_top = 73.0
+offset_right = 783.0
+offset_bottom = 120.0
 theme_override_fonts/font = ExtResource("3_4jtd1")
+theme_override_styles/normal = SubResource("StyleBoxFlat_frxao")
+text = "Continue"
+
+[node name="StoryText" type="Label" parent="Dialogue_Panel"]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 22.0
+offset_right = 748.0
+offset_bottom = 100.0
+theme = SubResource("Theme_dli2k")
+theme_type_variation = &"TooltipLabel"
+text = "Lorem"
 autowrap_mode = 2
 
 [node name="Head" type="Sprite2D" parent="."]
@@ -491,14 +500,4 @@ offset_bottom = 68.0
 texture = ExtResource("16_en5oy")
 expand_mode = 1
 
-[node name="ClueButton" type="Button" parent="."]
-offset_left = 833.0
-offset_top = 676.0
-offset_right = 974.0
-offset_bottom = 723.0
-theme_override_fonts/font = ExtResource("3_4jtd1")
-theme_override_styles/normal = SubResource("StyleBoxFlat_frxao")
-text = "Clue"
-
 [connection signal="pressed" from="LosePanel/ReturnMain" to="." method="_on_return_main_pressed"]
-[connection signal="pressed" from="ClueButton" to="." method="_on_clue_button_pressed"]

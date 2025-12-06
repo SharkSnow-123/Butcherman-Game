@@ -1,42 +1,34 @@
-[gd_scene load_steps=7 format=3 uid="uid://bm0miw52yrtj4"]
+[gd_scene load_steps=6 format=3 uid="uid://bm0miw52yrtj4"]
 
-[ext_resource type="Script" uid="uid://blfysr4m1rmc3" path="res://Scripts/intro_scene_2_dialogue.gd" id="1_51hp2"]
 [ext_resource type="Texture2D" uid="uid://bp86kqoivwqui" path="res://Photos/IntroScene1.png" id="1_vsbxp"]
-[ext_resource type="FontFile" uid="uid://xcsqkcqh8yb0" path="res://Others/KeyboardFont.TTF" id="2_51hp2"]
-[ext_resource type="Script" uid="uid://x73l362kgmyl" path="res://Scripts/intro_2_cont_button.gd" id="3_51hp2"]
+[ext_resource type="FontFile" uid="uid://xcsqkcqh8yb0" path="res://KeyboardFont.TTF" id="2_51hp2"]
+[ext_resource type="Script" uid="uid://osgah80afe0m" path="res://intro_2_cont_button.gd" id="3_51hp2"]
 
 [sub_resource type="Theme" id="Theme_1hblg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2g4dy"]
 bg_color = Color(0.21470258, 0.21470258, 0.21470246, 1)
 
-[node name="Intro_Scene2" type="Node2D"]
-script = ExtResource("1_51hp2")
+[node name="Intro_Scene1" type="Node2D"]
 
 [node name="IntroScene1" type="Sprite2D" parent="."]
 position = Vector2(511, 383)
 texture = ExtResource("1_vsbxp")
 
 [node name="Panel" type="Panel" parent="."]
-offset_left = 32.0
-offset_top = 586.0
-offset_right = 989.0
-offset_bottom = 731.0
+visible = false
+offset_left = 265.0
+offset_top = 526.0
+offset_right = 1316.0
+offset_bottom = 680.0
 
-[node name="StoryText" type="Label" parent="Panel"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.030000001
-anchor_top = 0.156
-anchor_right = 0.030000001
-anchor_bottom = 0.156
-offset_left = -15.52
-offset_top = -10.840023
-offset_right = 750.48
-offset_bottom = 109.15997
+[node name="StoryText" type="Label" parent="."]
+offset_left = 46.0
+offset_top = 604.0
+offset_right = 986.0
+offset_bottom = 716.0
 theme = SubResource("Theme_1hblg")
 theme_type_variation = &"TooltipLabel"
-theme_override_fonts/font = ExtResource("2_51hp2")
 autowrap_mode = 2
 
 [node name="Intro2_ContButton" type="Button" parent="."]
