@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c3uft1m0t7k83"
+path="res://.godot/imported/Anxiety - Soundridemusic - SoundLoadMate.com.mp3-3dd7b2ac8a31fa2915713f4a784e937b.mp3str"
+
+[deps]
+
+source_file="res://Music/Anxiety - Soundridemusic - SoundLoadMate.com.mp3"
+dest_files=["res://.godot/imported/Anxiety - Soundridemusic - SoundLoadMate.com.mp3-3dd7b2ac8a31fa2915713f4a784e937b.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

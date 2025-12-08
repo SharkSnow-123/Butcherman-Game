@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bxyxobu0mxp76"
+path="res://.godot/imported/Suspense Pad - Fourpin Sound - SoundLoadMate.com.mp3-8096a16cc6ac0603b6ce7b63dd5dd5f7.mp3str"
+
+[deps]
+
+source_file="res://Music/Suspense Pad - Fourpin Sound - SoundLoadMate.com.mp3"
+dest_files=["res://.godot/imported/Suspense Pad - Fourpin Sound - SoundLoadMate.com.mp3-8096a16cc6ac0603b6ce7b63dd5dd5f7.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

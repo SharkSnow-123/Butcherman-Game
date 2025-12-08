@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://by46qb7uyn4ye"
+path="res://.godot/imported/Suspense - Benicx - SoundLoadMate.com.mp3-8355c95b2d0525da2f2d87e52eefc16d.mp3str"
+
+[deps]
+
+source_file="res://Music/Suspense - Benicx - SoundLoadMate.com.mp3"
+dest_files=["res://.godot/imported/Suspense - Benicx - SoundLoadMate.com.mp3-8355c95b2d0525da2f2d87e52eefc16d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

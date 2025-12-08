@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cwomrp710d1w8"
+path="res://.godot/imported/Suspense Low - jonaskappel - SoundLoadMate.com.mp3-5b8444ec3b043b50e5fd9ec8c34f3abc.mp3str"
+
+[deps]
+
+source_file="res://Music/Suspense Low - jonaskappel - SoundLoadMate.com.mp3"
+dest_files=["res://.godot/imported/Suspense Low - jonaskappel - SoundLoadMate.com.mp3-5b8444ec3b043b50e5fd9ec8c34f3abc.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
