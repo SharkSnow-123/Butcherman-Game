@@ -6,3 +6,6 @@ extends Node2D
 
 func _ready():
 	TransitionScreen.fade_in()
+	MusicPlayer.play_music("res://Music/sonic-exe-laugh.mp3")
+	
+	
