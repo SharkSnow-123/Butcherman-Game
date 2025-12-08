@@ -97,7 +97,7 @@ func _ready():
 	connect_buttons()
 	start_game()
 	TransitionScreen.fade_in()
-	MusicPlayer.play_music("res://Music/Suspense Low - jonaskappel - SoundLoadMate.com.mp3")
+	MusicPlayer.play_music("res://Music/gameplay_scene_bgm.mp3")
 	
 
 
