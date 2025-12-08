@@ -19,10 +19,6 @@ corner_radius_bottom_left = 10
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_6brm5")
 
-[node name="Lostscene" type="Sprite2D" parent="."]
-position = Vector2(512, 385)
-texture = ExtResource("2_2hyne")
-
 [node name="losttomain" type="Button" parent="."]
 offset_left = 326.0
 offset_top = 649.0
@@ -32,5 +28,9 @@ theme_override_fonts/font = ExtResource("3_cdvjj")
 theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxFlat_cdvjj")
 text = "Return to Main Menu"
+
+[node name="Lostscene" type="Sprite2D" parent="."]
+position = Vector2(512, 385)
+texture = ExtResource("2_2hyne")
 
 [connection signal="pressed" from="losttomain" to="." method="_on_losttomain_pressed"]

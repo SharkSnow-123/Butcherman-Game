@@ -1,4 +1,7 @@
 extends Node2D
 
 func _on_wontomain_pressed() -> void:
-	get_tree().change_scene_to_file("res://Scenes/main.tscn")
+	TransitionScreen.fade_out("res://Scenes/main.tscn")
+
+func _ready() -> void:
+	MusicPlayer.play_music("res://Music/Suspense Pad - Fourpin Sound - SoundLoadMate.com.mp3")

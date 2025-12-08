@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://8eorouef8qig"]
+[gd_scene load_steps=7 format=3 uid="uid://8eorouef8qig"]
 
-[ext_resource type="Script" uid="uid://ihy3vfqxnvrl" path="res://main.gd" id="1_bo1nx"]
+[ext_resource type="Script" uid="uid://ihy3vfqxnvrl" path="res://Scripts/main.gd" id="1_bo1nx"]
 [ext_resource type="Texture2D" uid="uid://d16ld3yvkw8eb" path="res://Photos/Butcherman.png" id="2_bo1nx"]
 [ext_resource type="Texture2D" uid="uid://buxx7u7yn5b5c" path="res://Music/music on.png" id="3_8gbba"]
 [ext_resource type="Texture2D" uid="uid://cfcjelys0mbqg" path="res://Music/music off.png" id="4_jjvhh"]
+[ext_resource type="AudioStream" uid="uid://daemdw4ddlk6t" path="res://Music/button_play.wav" id="5_kry3j"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_0xm2m"]
 
@@ -61,6 +62,9 @@ scale = Vector2(0.405, 0.405)
 toggle_mode = true
 texture_normal = ExtResource("3_8gbba")
 texture_pressed = ExtResource("4_jjvhh")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_kry3j")
 
 [connection signal="pressed" from="Butcherman/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="Butcherman/QuitButton" to="." method="_on_quit_button_pressed"]

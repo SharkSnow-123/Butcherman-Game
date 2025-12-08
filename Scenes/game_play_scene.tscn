@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://d0yg1xr46lje1"]
+[gd_scene load_steps=21 format=3 uid="uid://d0yg1xr46lje1"]
 
 [ext_resource type="Script" uid="uid://brm7p6gshbjpu" path="res://Scripts/game_play_scene.gd" id="1_q0gqs"]
 [ext_resource type="Texture2D" uid="uid://bkrd4h3hptpd2" path="res://Photos/GamePlayScene.png" id="2_frxao"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dyb7wbnvudins" path="res://Photos/Lose.png" id="5_l37oj"]
 [ext_resource type="Texture2D" uid="uid://dilfyhoor25sx" path="res://Photos/Win.png" id="6_ydirw"]
 [ext_resource type="Texture2D" uid="uid://c1ndfo1gae5nd" path="res://Hearts_GUI/bar_1.png" id="12_uob7q"]
+[ext_resource type="AudioStream" uid="uid://ctggd6re0pihf" path="res://Music/button_sound.wav" id="12_vx3cq"]
 [ext_resource type="Texture2D" uid="uid://b4ahkpp7cbhno" path="res://Hearts_GUI/bar_2.png" id="13_7asqj"]
 [ext_resource type="Texture2D" uid="uid://cn4kv3v1y4yvp" path="res://Hearts_GUI/bar_3.png" id="14_xgw85"]
 [ext_resource type="Texture2D" uid="uid://cuerutewlmg3r" path="res://Hearts_GUI/bar_4.png" id="15_v0ehj"]
@@ -491,5 +492,5 @@ theme_override_fonts/font = ExtResource("3_4jtd1")
 theme_override_styles/normal = SubResource("StyleBoxFlat_frxao")
 text = "Clue"
 
-[connection signal="pressed" from="LosePanel/ReturnMain" to="." method="_on_return_main_pressed"]
-[connection signal="pressed" from="ClueButton" to="." method="_on_clue_button_pressed"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_vx3cq")
