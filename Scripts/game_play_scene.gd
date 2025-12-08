@@ -1,40 +1,30 @@
 extends Node
 const RecodeLowLevel = preload("res://Scripts/stack_low_level.gd")
 var ArrayLowLevel = preload("res://Scripts/array_low_level.gd").new()
+
 #--- Notes ---
 # Hello, greetings to whoever is reading this. This is merely a prototype and there's a lot of things to implement to. 
 # UNDO is still built-in, not manually coded to see how the game works. So, as arrays.
 # Note written by: Sharksnow-123 (Briar)
 
+#UPDATE -- 12/8/25
+# Mika-mics adjust the stack/array code! Praise her mortals!
+
+
 # --- SETTINGS ---
 const MAX_GUESSES := 5
-var word_list_day1 = ["APPLE", "ROBOT", "SNAKE"]
-var word_list_day2 = ["WATERFALL", "NOTEBOOK", "PYTHON"]
-var word_list_day3 = ["ASTRONOMY", "COMPUTER", "VOLCANO"]
-
-# --- LOW LEVEL SETTINGS ---
-#const MAX_WORD_SIZE := 32
-#const MAX_GUESSED := 32
-#var hidden := []
-#var hidden_size := 0
-#var guessed_letters := []
-#var guessed_size := 0
-var undo_stack : RecodeLowLevel          # using built-in Array for undo snapshots
-var redo_stack : RecodeLowLevel          # ^^
+var undo_stack : RecodeLowLevel         
+var redo_stack : RecodeLowLevel         
 var undoCtr = 0;
 var redoCtr = 0;
 
-
 # --- STATE ---
 var chosen_word := ""
-#var hidden := []
-#var guessed_letters := []
 var wrong_guesses := 0
 var current_day := 1
 const MAX_DAYS := 3
-var last_round_result : String = ""   # "win" or "lose"
+var last_round_result : String = "" 
 var currentHealth: int = MAX_GUESSES
-
 
 # --- UI ---
 @onready var word_label = $WordLabel
@@ -47,6 +37,52 @@ var currentHealth: int = MAX_GUESSES
 @onready var continue_button = $LosePanel/ContinueButton
 @onready var return_button = $LosePanel/ReturnMain
 @onready var day_frame = $DayFrame
+@onready var this_panel = $Dialogue_Panel
+@onready var this_label = $Dialogue_Panel/StoryText
+@onready var clue_button = $ClueButton
+
+#----------------
+#---DIALOGUES----
+#----------------
+var word_answer = [
+	"LIGHT",
+	"CANDLE",
+	"KEY"
+]
+
+var scene_dialogues = [
+	#DAY 1
+	["Ah… it’s been a while. You’re still my friend, right?", 
+	"I'm thankful you were my first", "I know you can’t talk right now… but you understand.",
+	"Let’s play a game. Butcherman.", "See the letters? One mistake, and you feel pain. Simple.", 
+	"Here’s your riddle: I can fill a room but take up no space. What am I?"
+	],
+	#DAY 2
+	["How are you feeling?", "Still surprised you’ve got all your limbs? That’s thanks to me. I wouldn’t leave my friend hanging",
+	"You know how this works by now. You did well yesterday.", "So let’s make things harder.", 
+	"Riddle time: I burn to give you light, but the more I shine, the shorter I get. A single breath can end me. What am I?"
+	],
+	#DAY 3
+	[ "Three days and you’re still alive. Lost a bit of blood here and there, but you’re breathing—good job.", 
+	"Here’s the deal: answer this one, and I’ll let you go",
+	"How many times do I have to say it? The more you fight, the worse it gets.",
+	"Anyway, here’s your final riddle.",
+	"If I turn once, what’s outside won’t get in. Turn again, what’s inside won’t get out. What am I?"
+	]
+	
+]
+
+var riddles = [
+	#Day 1
+	["Here’s your riddle: I can fill a room but take up no space. What am I?"],
+	
+	#Day 2
+	["I burn to give you light, but the more I shine, the shorter I get. A single breath can end me. What am I?"],
+	
+	#Day3
+	["If I turn once, what’s outside won’t get in. Turn again, what’s inside won’t get out. What am I?"]
+]
+
 
 func _ready():
 	#hidden.resize(MAX_WORD_SIZE)
@@ -59,6 +95,7 @@ func _ready():
 	randomize()
 	connect_buttons()
 	start_game()
+
 
 
 # ----------------------------------
@@ -74,10 +111,11 @@ func start_game():
 	ArrayLowLevel.clear_hidden()
 	undo_stack.clear()
 	redo_stack.clear()
+	play_Day_Dialogue()
 
 	# choose a word based on current day
 	chosen_word = _get_word_for_day()
-	#hidden.clear()
+
 	
 	for c in chosen_word:
 		ArrayLowLevel.hidden_push("_")
@@ -94,12 +132,11 @@ func start_game():
 
 func _get_word_for_day() -> String:
 	# pick a random word according to current day
-	if current_day == 1:
-		return word_list_day1[randi() % word_list_day1.size()]
-	elif current_day == 2:
-		return word_list_day2[randi() % word_list_day2.size()]
-	else:
-		return word_list_day3[randi() % word_list_day3.size()]
+	var index = current_day - 1
+	if index >= word_answer.size():
+		index = word_answer.size()-1
+	
+	return word_answer[index]
 
 
 # ----------------------------------
@@ -117,6 +154,7 @@ func connect_buttons():
 	redo_button.pressed.connect(redo)
 	continue_button.pressed.connect(_on_continue_pressed)
 	return_button.pressed.connect(_on_return_main_pressed)
+	clue_button.pressed.connect(_on_clue_button_pressed)
 
 
 # ----------------------------------
@@ -338,6 +376,37 @@ func _on_continue_pressed():
 	# Clear result so it doesn't apply twice
 	last_round_result = ""
 
+
+# ----------------------------------
+# DIALOGUES
+# ----------------------------------
+func play_Day_Dialogue():
+	var index = current_day - 1
+	
+	if is_instance_valid(clue_button):
+		clue_button.visible = false
+	
+	if index < scene_dialogues.size():
+		var lines_for_the_day = scene_dialogues[index]
+		
+		await DialogueManager.line_player(lines_for_the_day, this_panel, this_label)
+	
+
+	if is_instance_valid(clue_button):
+		clue_button.visible = true
+	
+
+func riddle_for_the_Day():
+	var index = current_day - 1
+	
+	if index < riddles.size():
+		var riddle_of_the_day = riddles[index]
+		
+		DialogueManager.line_player(riddle_of_the_day, this_panel, this_label)
+
+
+func _on_clue_button_pressed() -> void:
+	riddle_for_the_Day()
 
 
 
