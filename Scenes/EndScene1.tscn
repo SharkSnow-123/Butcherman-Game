@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://hfqnly54q1mv" path="res://Photos/WONSCENE.png" id="2_4ha3s"]
 [ext_resource type="FontFile" uid="uid://cgl1uqp4uqud0" path="res://Others/ButtonFont.TTF" id="3_hus6f"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hus6f"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r0sd3"]
 bg_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
 border_width_left = 2
 border_width_top = 2
@@ -23,15 +23,14 @@ script = ExtResource("1_vhu5x")
 position = Vector2(510, 384)
 texture = ExtResource("2_4ha3s")
 
-[node name="wontomain" type="Button" parent="."]
-offset_left = 326.0
-offset_top = 649.0
-offset_right = 694.0
-offset_bottom = 715.0
+[node name="wontomain1" type="Button" parent="Wonscene"]
+offset_left = -183.0
+offset_top = 265.0
+offset_right = 185.0
+offset_bottom = 331.0
 theme_override_fonts/font = ExtResource("3_hus6f")
 theme_override_font_sizes/font_size = 24
-theme_override_styles/normal = SubResource("StyleBoxFlat_hus6f")
+theme_override_styles/normal = SubResource("StyleBoxFlat_r0sd3")
 text = "Return to Main Menu"
-flat = true
 
-[connection signal="pressed" from="wontomain" to="." method="_on_wontomain_pressed"]
+[connection signal="pressed" from="Wonscene/wontomain1" to="." method="_on_wontomain_1_pressed"]
