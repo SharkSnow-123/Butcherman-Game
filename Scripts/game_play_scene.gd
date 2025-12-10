@@ -7,25 +7,12 @@ var ArrayLowLevel = preload("res://Scripts/array_low_level.gd").new()
 # UNDO is still built-in, not manually coded to see how the game works. So, as arrays.
 # Note written by: Sharksnow-123 (Briar)
 
-#when writing constants, be sure to CAPITALIZE them! --SHARKIE (OwO /)
-
-
+# Praise MIKA for the ARRAY/STACKS CODE, LAURA for ARTS and UI, and CHAD FOR THE GOATED BGM's and BUTTONS, SHARKIE for the initial prototype -- by Sharkie
 
 # --- SETTINGS ---
 const MAX_GUESSES := 5
-#var word_list_day1 = ["APPLE", "ROBOT", "SNAKE"]
-#var word_list_day2 = ["WATERFALL", "NOTEBOOK", "PYTHON"]
-#var word_list_day3 = ["ASTRONOMY", "COMPUTER", "VOLCANO"]
-
-# --- LOW LEVEL SETTINGS ---
-#const MAX_WORD_SIZE := 32
-#const MAX_GUESSED := 32
-#var hidden := []
-#var hidden_size := 0
-#var guessed_letters := []
-#var guessed_size := 0
-var undo_stack : RecodeLowLevel          # using built-in Array for undo snapshots
-var redo_stack : RecodeLowLevel          # ^^
+var undo_stack : RecodeLowLevel        
+var redo_stack : RecodeLowLevel         
 var undoCtr = 0;
 var redoCtr = 0;
 
@@ -40,7 +27,7 @@ var chosen_word := ""
 var wrong_guesses := 0
 var current_day := 1
 const MAX_DAYS := 3
-var last_round_result : String = ""   # "win" or "lose"
+var last_round_result : String = "" 
 var currentHealth: int = MAX_GUESSES
 
 
@@ -105,8 +92,6 @@ func _ready():
 	ArrayLowLevel.guessed_letters.resize(ArrayLowLevel.MAX_GUESSED)
 	undo_stack = RecodeLowLevel.new(50)
 	redo_stack = RecodeLowLevel.new(50)
-	
-	randomize()
 	connect_buttons()
 	start_game()
 	TransitionScreen.fade_in()
@@ -212,7 +197,7 @@ func update_health_display():
 		hearts[currentHealth - 1].visible = true;
 		
 	
-	
+
 # ----------------------------------
 # GUESS LETTER
 # ----------------------------------
@@ -304,10 +289,10 @@ func undo():
 	print("[UNDO] restored state; undo stack size =", undo_stack.size)
 	print("[SAVE] saved state; redo stack size =", redo_stack.size)
 	$AudioStreamPlayer.play()
+	
 # ----------------------------------
 # REDO
 # ----------------------------------
-
 func redo():
 	if redoCtr == 2:
 		return
@@ -331,7 +316,6 @@ func redo():
 	currentHealth = state.currentH
 	
 	redoCtr += 1
-	#undoCtr = 0
 	
 	update_ui()
 	update_health_display()
